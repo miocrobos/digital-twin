@@ -1,0 +1,89 @@
+/* ══════════════════════════════════════════════════════════════
+   Future Health Twin — Design Token Contract
+   Single source of truth for palette, type, spacing, radii.
+   Link this file first on every new surface. Do not redefine.
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ── Ink (one colour, six weights) ──────────────────────────
+     Body text, borders, muted text — light on dark.            */
+  --ink:     #e8f2ea;              /* 100 % — headings, body        */
+  --ink-80:  rgba(232,242,234,.80);/* secondary labels, nav         */
+  --ink-70:  rgba(232,242,234,.70);/* captions, timestamps          */
+  --ink-60:  rgba(232,242,234,.60);/* placeholders, help text       */
+  --ink-10:  rgba(63,110,68,.18);  /* dividers, subtle borders      */
+  --ink-05:  rgba(63,110,68,.08);  /* hover fills, zebra rows       */
+
+  /* ── Canvas & surface ───────────────────────────────────────  */
+  --canvas:  #040d06;              /* page / app background (dark)  */
+  --surface: #0e1d0f;              /* card, modal, panel background */
+
+  /* ── Green accent ───────────────────────────────────────────
+     Primary accent colour matching the original dark theme.    */
+  --ember:    #6ab882;
+  --ember-10: rgba(106,184,130,.10);
+  --ember-20: rgba(106,184,130,.20);
+  --ember-30: rgba(106,184,130,.30);
+
+  /* ── Dark surface mid-tones ─────────────────────────────────  */
+  --sage-50:  #152714;             /* selected bg, subtle pills     */
+  --sage-100: #1e3a1f;             /* chart fill, stronger selected */
+
+  /* ── DNA base data-colours (A / T / G / C) ──────────────────
+     Adapted for light backgrounds. These are data colours for
+     the sequence viewer and 3D legend — not UI chrome colours.  */
+  --base-A:  #2563eb;              /* adenine  — blue               */
+  --base-T:  #b45309;              /* thymine  — amber-brown        */
+  --base-G:  #15803d;              /* guanine  — forest             */
+  --base-C:  #be3a1e;              /* cytosine — terracotta         */
+
+  /* ── Typography ─────────────────────────────────────────────
+     Geist Sans only. Geist Mono for IDs, gene symbols, FHIR.
+     No serif. No italic. No other sans.                          */
+  --font-sans: 'Geist', 'Geist Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Type scale */
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-lg:   17px;
+  --text-xl:   20px;
+  --text-2xl:  24px;
+  --text-3xl:  30px;
+  --text-4xl:  38px;
+
+  /* Line-height */
+  --leading-tight:  1.25;
+  --leading-normal: 1.55;
+  --leading-loose:  1.7;
+
+  /* Letter-spacing for eyebrows */
+  --tracking-wide:   0.07em;
+  --tracking-wider:  0.12em;
+
+  /* ── Radii ───────────────────────────────────────────────────  */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   18px;
+  --radius-full: 9999px;
+
+  /* ── Shadows (forest-tinted, not grey) ──────────────────────  */
+  --shadow-sm: 0 1px 3px rgba(60,79,61,.07), 0 1px 2px rgba(60,79,61,.05);
+  --shadow-md: 0 4px 14px rgba(60,79,61,.09), 0 2px 4px rgba(60,79,61,.05);
+  --shadow-lg: 0 12px 32px rgba(60,79,61,.11), 0 4px 8px rgba(60,79,61,.05);
+
+  /* ── Spacing scale ───────────────────────────────────────────  */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+}

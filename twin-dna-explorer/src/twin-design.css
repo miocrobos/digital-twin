@@ -1,0 +1,529 @@
+/* ══════════════════════════════════════════════════════════════
+   Future Health Twin — Design System Override
+   Imported AFTER twin.css in layout.tsx so these rules win.
+   All tokens sourced from colors_and_type.css (imported before).
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Root tokens + legacy-var aliases ───────────────────────── *
+   Redefines the old dark-theme vars so every inline style that
+   still uses var(--cyan) / var(--bg) / var(--text3) etc. picks
+   up the new light values without touching the JSX.             */
+:root {
+  /* Design tokens — dark black & green */
+  --ink:      #e8f2ea;
+  --ink-80:   rgba(232,242,234,.80);
+  --ink-70:   rgba(232,242,234,.70);
+  --ink-60:   rgba(232,242,234,.60);
+  --ink-10:   rgba(63,110,68,.18);
+  --ink-05:   rgba(63,110,68,.08);
+  --canvas:   #040d06;
+  --surface:  #0e1d0f;
+  --ember:    #6ab882;
+  --ember-10: rgba(106,184,130,.10);
+  --ember-20: rgba(106,184,130,.20);
+  --ember-30: rgba(106,184,130,.30);
+  --sage-50:  #152714;
+  --sage-100: #1e3a1f;
+  --base-A:   #4a8ff0;
+  --base-T:   #f0a830;
+  --base-G:   #4aba70;
+  --base-C:   #e05050;
+  --font-sans: 'Geist', 'Geist Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.4), 0 1px 2px rgba(0,0,0,.3);
+  --shadow-md: 0 4px 14px rgba(0,0,0,.5), 0 2px 4px rgba(0,0,0,.3);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,.6), 0 4px 8px rgba(0,0,0,.3);
+  --radius-sm:   6px;  --radius-md:  10px;  --radius-lg:  14px;
+  --radius-xl:  18px;  --radius-full: 9999px;
+
+  /* Legacy aliases — original dark vars */
+  --bg:       #040d06;
+  --bg2:      #091309;
+  --surface2: #152714;
+  --border:   rgba(63,110,68,.18);
+  --border2:  rgba(90,155,96,.28);
+  --cyan:     #6ab882;
+  --cyan2:    #4d9966;
+  --green:    #a0cc9e;
+  --purple:   #9f7dbd;
+  --amber:    #c9a456;
+  --text:     #e8f2ea;
+  --text2:    #b4c8b7;
+  --text3:    #789079;
+  --A: #4a8ff0;
+  --T: #f0a830;
+  --G: #4aba70;
+  --C: #e05050;
+}
+
+/* ── Base ────────────────────────────────────────────────────── */
+html, body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar-thumb { background: var(--ink-10); }
+
+/* ═══════════════════════════════════════════════════════════════
+   APP SHELL
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Global Header ── */
+.global-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--ink-10);
+  box-shadow: var(--shadow-sm);
+}
+
+.logo-text-grad {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  color: var(--ink);
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: var(--ink);
+  background-clip: unset;
+}
+
+.nav-tab {
+  color: var(--ink-70);
+  background: transparent;
+  border-radius: var(--radius-md);
+  transition: background .15s, color .15s;
+}
+.nav-tab:hover { background: var(--ink-05); color: var(--ink); }
+.nav-tab.active { background: var(--ember-10); color: var(--ember); }
+
+.hbtn {
+  color: var(--ink-80);
+  border-color: var(--ink-10);
+  background: transparent;
+}
+.hbtn:hover  { background: var(--ink-05); color: var(--ink); border-color: var(--ink-10); }
+.hbtn.active { background: var(--ember-10); border-color: var(--ember-30); color: var(--ember); }
+.avatar-nav-btn { color: var(--ink-70); border-color: var(--ink-10); }
+.avatar-nav-btn:hover { background: var(--ink-05); border-color: var(--ink-10); }
+
+.stat-pill {
+  background: var(--canvas);
+  border-color: var(--ink-10);
+  color: var(--ink-70);
+  font-family: var(--font-mono);
+}
+.stat-tooltip {
+  background: var(--surface);
+  border-color: var(--ink-10);
+  color: var(--ink);
+  box-shadow: var(--shadow-md);
+}
+.stat-tooltip strong { color: var(--ember); }
+
+/* ── Landing page ── */
+.landing-page  { background: var(--canvas); }
+.landing-hero  { background: var(--canvas); }
+.spline-bg     { opacity: .5; }
+
+.hero-badge {
+  color: var(--ink-70);
+  border-color: var(--ink-10);
+  background: var(--surface);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.hero-title { color: var(--ink); }
+.hero-gradient {
+  color: var(--ember);
+  background: none;
+  -webkit-text-fill-color: var(--ember);
+  background-clip: unset;
+}
+.hero-subtitle { color: var(--ink-70); }
+.hero-scroll-hint { color: var(--ink-60); }
+
+.cta-primary {
+  background: var(--ember);
+  color: #fff;
+  box-shadow: 0 4px 16px var(--ember-20);
+  border: none;
+}
+.cta-primary:hover {
+  background: var(--ember);
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--ember-30);
+}
+.cta-secondary {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--ink-10);
+  box-shadow: var(--shadow-sm);
+}
+.cta-secondary:hover { background: var(--canvas); }
+
+.section-label { color: var(--ember); }
+.section-title { color: var(--ink); }
+.section-desc  { color: var(--ink-70); }
+.landing-section.alt-bg { background: var(--surface); }
+
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--ink-05);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+.feature-card:hover { box-shadow: var(--shadow-md); }
+.fc-icon  { background: var(--canvas); color: var(--ember); }
+.fc-title { color: var(--ink); }
+.fc-desc  { color: var(--ink-70); }
+.fc-cta   { color: var(--ember); }
+
+.step-card { background: var(--surface); box-shadow: var(--shadow-sm); border-radius: var(--radius-xl); }
+.step-num  { color: var(--ember); font-family: var(--font-mono); }
+.step-icon { background: var(--canvas); color: var(--ink-70); }
+.step-title { color: var(--ink); }
+.step-desc  { color: var(--ink-70); }
+.step-arrow { color: var(--ink-10); }
+
+.landing-footer-cta { background: var(--surface); }
+.footer-cta-title   { color: var(--ink); }
+.footer-cta-sub     { color: var(--ink-70); }
+
+/* mini helix — original transparent style from twin.css */
+.mini-bond   { background: var(--ink-10); }
+
+/* ── Questionnaire ── */
+.questionnaire-page { background: var(--canvas); }
+.quest-progress-bar { background: var(--ink-10); }
+.quest-progress-fill { background: var(--ember); }
+.quest-dot          { background: var(--ink-10); }
+.quest-dot.done     { background: var(--sage-100); }
+.quest-dot.active   { background: var(--ember); }
+
+.quest-card {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  border: none;
+}
+.quest-icon       { background: var(--canvas); color: var(--ember); border-radius: var(--radius-lg); }
+.quest-step-label { color: var(--ink-60); }
+.quest-title      { color: var(--ink); }
+.quest-help       { color: var(--ink-60); background: var(--ink-05); border-radius: var(--radius-md); }
+
+.quest-slider {
+  background: var(--ink-10);
+}
+.quest-slider::-webkit-slider-thumb {
+  background: var(--ember);
+  border-color: var(--surface);
+  box-shadow: 0 1px 4px rgba(200,92,56,.3);
+}
+.quest-slider::-moz-range-thumb {
+  background: var(--ember);
+  border-color: var(--surface);
+  box-shadow: 0 1px 4px rgba(200,92,56,.3);
+}
+.slider-labels { color: var(--ink-60); }
+.big-val  { color: var(--ink); }
+.val-unit { color: var(--ink-60); }
+
+.quest-opt {
+  background: var(--surface);
+  border-color: var(--ink-10);
+  border-radius: var(--radius-lg);
+}
+.quest-opt:hover    { background: var(--canvas); }
+.quest-opt.selected { border-color: var(--ember); background: var(--ember-10); }
+.quest-opt-label    { color: var(--ink); }
+.quest-opt-desc     { color: var(--ink-60); }
+
+.quest-back {
+  background: transparent;
+  border-color: var(--ink-10);
+  color: var(--ink-70);
+  border-radius: var(--radius-full);
+}
+.quest-back:hover { background: var(--canvas); }
+.quest-next {
+  background: var(--ember);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px var(--ember-20);
+}
+.quest-next:hover { filter: brightness(1.05); transform: translateY(-1px); }
+
+.preview-score { color: var(--ink); font-family: var(--font-mono); }
+
+/* ── Twin Health page ── */
+.twin-health-page { background: var(--canvas); }
+
+.summary-card {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1.5px solid transparent;
+}
+.highlight-card { border-color: var(--ember-30); background: var(--ember-10); }
+.sc-label { color: var(--ink-60); }
+.sc-value { color: var(--ink); }
+.sc-sub   { color: var(--ink-60); }
+.sc-desc  { color: var(--ink-60); }
+
+.health-panel {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: none;
+}
+.health-panel-heading { color: var(--ink-60); }
+.improvement-badge { background: var(--ember-10); color: var(--ember); }
+.chart-hint { color: var(--ink-60); }
+.lever-hint { color: var(--ink-60); }
+
+.lever-card {
+  background: var(--surface);
+  border-color: var(--ink-10);
+  border-radius: var(--radius-lg);
+}
+.lever-card:hover  { background: var(--canvas); border-color: var(--ink-10); }
+.lever-card.active { background: var(--ember-10); border-color: var(--ember-30); }
+.lever-label { color: var(--ink); }
+.lever-desc  { color: var(--ink-70); }
+.lever-gain  { color: var(--ember); font-family: var(--font-mono); }
+.lever-icon  { color: var(--ink-70); }
+.cur-val     { color: var(--ink-70); }
+.tgt-val     { color: var(--ink); }
+
+.impact-badge.impact-high   { background: var(--ember-10);  color: var(--ember); }
+.impact-badge.impact-medium { background: var(--ink-05);    color: var(--ink-70); }
+.impact-badge.impact-low    { background: var(--ink-05);    color: var(--ink-60); }
+.no-levers { color: var(--ink-60); }
+
+.reset-btn { color: var(--ink-70); border-color: var(--ink-10); background: transparent; }
+.reset-btn:hover { background: var(--canvas); }
+
+/* ── Chat panel ── */
+.right-panel {
+  background: var(--surface);
+  border-left-color: var(--ink-10);
+}
+.panel-header {
+  border-bottom-color: var(--ink-10);
+  background: var(--surface);
+}
+.panel-title  { color: var(--ink); }
+.chat-title   { color: var(--ink); }
+.chat-subtitle { color: var(--ink-60); }
+.chat-hbtn    { color: var(--ink-60); background: transparent; border: none; }
+.chat-hbtn:hover { background: var(--canvas); color: var(--ink); }
+
+.msg-avatar.ai   { background: var(--canvas); color: var(--ink-70); border-color: var(--ink-10); }
+.msg-avatar.user { background: var(--ember-10); color: var(--ember); }
+
+.msg-bubble.ai   { background: var(--canvas); color: var(--ink); }
+.msg-bubble.user { background: var(--ember); color: #fff; }
+.msg-bubble code { background: var(--ink-05); color: var(--ink); }
+.msg-bubble.user code { background: rgba(255,255,255,.2); }
+.msg-bubble pre  { background: var(--ink-05); color: var(--ink); }
+
+.typing span { background: var(--ink-60); }
+
+.suggestions-row { border-top-color: var(--ink-10); }
+.sugg-chip {
+  background: var(--surface);
+  border-color: var(--ink-10);
+  color: var(--ink-70);
+}
+.sugg-chip:hover { background: var(--ember-10); color: var(--ember); border-color: var(--ember-30); }
+
+.chat-input-area  { background: var(--surface); border-top-color: var(--ink-10); }
+.chat-input-wrap  { background: var(--canvas); border-color: var(--ink-10); }
+.chat-textarea    { color: var(--ink); background: transparent; }
+.chat-textarea::placeholder { color: var(--ink-60); }
+.send-btn { background: var(--ember); color: #fff; }
+.send-btn:hover:not(:disabled) { filter: brightness(1.1); }
+.send-btn:disabled { opacity: .4; }
+
+/* ── Left panel / DNA snapshot ── */
+.left-panel {
+  background: var(--surface);
+  border-right-color: var(--ink-10);
+}
+.panel-section-title { color: var(--ink-60); }
+.info-badge {
+  background: var(--canvas);
+  border-color: var(--ink-10);
+  color: var(--ink-60);
+}
+.info-badge:hover, .info-badge.open {
+  background: var(--ember-10);
+  color: var(--ember);
+  border-color: var(--ember-30);
+}
+.info-inline {
+  background: var(--canvas);
+  color: var(--ink-70);
+}
+.section-note { color: var(--ink-60); }
+
+.seq-input-wrap textarea {
+  background: var(--canvas);
+  border-color: var(--ink-10);
+  color: var(--ink);
+  font-family: var(--font-mono);
+}
+.seq-input-wrap textarea::placeholder { color: var(--ink-60); }
+.seq-input-wrap textarea:focus { border-color: var(--ember-30); }
+
+.seq-btn.primary   { background: var(--ember); color: #fff; border-color: transparent; }
+.seq-btn.secondary { background: var(--canvas); color: var(--ink-70); border-color: var(--ink-10); }
+.seq-btn.secondary:hover { background: var(--surface); }
+
+.base-explain { background: var(--canvas); color: var(--ink-70); }
+.base-explain.active { color: var(--ink); }
+
+.score-card    { background: var(--canvas); }
+.score-label   { color: var(--ink-60); }
+.score-value   { color: var(--ink); font-family: var(--font-mono); }
+.score-sub     { color: var(--ink-60); }
+.score-bar-bg  { background: var(--ink-10); }
+.score-bar-fill { background: var(--ember); }
+.score-explain { color: var(--ink-60); }
+.base-stat     { background: var(--canvas); }
+.bs-label      { font-family: var(--font-mono); }
+.bs-val        { color: var(--ink-60); }
+
+/* Preset list */
+.preset {
+  background: var(--surface);
+  border-color: var(--ink-10);
+  border-radius: var(--radius-lg);
+}
+.preset:hover { background: var(--ember-10); border-color: var(--ember-30); }
+.preset-name { color: var(--ink); }
+.preset-desc { color: var(--ink-60); }
+.preset-seq  { color: var(--ink-60); font-family: var(--font-mono); }
+
+/* ── Variant analyser ── */
+.va-label { color: var(--ink-60); }
+.va-input { background: var(--canvas); border-color: var(--ink-10); color: var(--ink); font-family: var(--font-mono); }
+.va-input:focus { border-color: var(--ember-30); }
+.va-loading { color: var(--ink-70); }
+.va-spinner { border-color: var(--ink-10); border-top-color: var(--ember); }
+.va-error   { color: var(--base-T); }
+.va-result-card { background: var(--canvas); border-color: var(--ink-10); }
+.va-score-label { color: var(--ink-60); }
+.va-interp-desc { color: var(--ink-70); }
+.va-powered     { color: var(--ink-60); font-family: var(--font-mono); }
+
+/* ── Explorer page ── */
+.page-explorer { background: var(--canvas); }
+.explorer-main { background: #0d1117; }
+
+.dna-tooltip {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--ink-10);
+  box-shadow: var(--shadow-md);
+}
+
+.explorer-floating-chat,
+.explorer-floating-dna {
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-xl);
+}
+
+.explorer-chat-fab {
+  background: var(--ember-10);
+  border-color: var(--ember-30);
+  color: var(--ember);
+  box-shadow: 0 4px 16px var(--ember-20);
+  backdrop-filter: blur(8px);
+}
+.explorer-chat-fab:hover { background: var(--ember-20); }
+
+/* ── Avatar page ── */
+.page-avatar { background: var(--canvas); }
+.avatar-hud-left,
+.avatar-hud-right { background: var(--canvas); }
+
+.hud-panel {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: none;
+}
+.hud-title { color: var(--ink-60); font-family: var(--font-sans); }
+.stat-ring-label { color: var(--ink-60); }
+.hud-bar-label { font-family: var(--font-mono); }
+.hud-bar-bg    { background: var(--ink-10); }
+.hud-bar-val   { color: var(--ink-60); font-family: var(--font-mono); }
+
+.hotspot-emoji,
+.hotspot-icon {
+  background: var(--surface);
+  border-color: var(--ink-10);
+  color: var(--ink-70);
+  box-shadow: var(--shadow-sm);
+}
+.body-hotspot.active .hotspot-emoji,
+.body-hotspot.active .hotspot-icon {
+  background: var(--ember);
+  border-color: var(--ember);
+  color: #fff;
+}
+.hotspot-pulse { background: var(--ember-20); }
+
+.region-info-card { border-color: var(--ink-10); }
+.region-stat-box  { background: var(--canvas); border-color: var(--ink-10); }
+.region-legend-row { color: var(--ink-70); }
+.region-legend-row:hover  { background: var(--canvas); }
+.region-legend-row.active { background: var(--ember-10); color: var(--ink); }
+
+.avatar-chat-toggle {
+  background: var(--ember);
+  color: #fff;
+  border: none;
+}
+.avatar-chat-toggle:hover { filter: brightness(1.05); }
+.avatar-chat-shell {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── App header (legacy) ── */
+.app-header { background: var(--surface); border-bottom-color: var(--ink-10); box-shadow: var(--shadow-sm); }
+.logo-text  { color: var(--ink); background: none; -webkit-text-fill-color: var(--ink); background-clip: unset; }
+.logo-sub   { color: var(--ink-60); }
+
+/* ── Base tiles ── */
+.base.A { background: var(--base-A); }
+.base.T { background: var(--base-T); }
+.base.G { background: var(--base-G); }
+.base.C { background: var(--base-C); }
+
+/* ── Loading screen ── */
+.loading-screen { background: #0d1117; }
+.dna-loader { border-color: rgba(255,255,255,.08); border-top-color: var(--ember); }
+
+/* ── Responsive adjustments ── */
+@media (max-width: 860px) {
+  .health-main-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .hero-title        { font-size: 36px; }
+  .section-title     { font-size: 24px; }
+  .feature-grid      { grid-template-columns: 1fr; }
+  .quest-cards-wrap.cols-3,
+  .quest-cards-wrap.cols-4 { grid-template-columns: 1fr 1fr; }
+  .teaser-split      { flex-direction: column; }
+}

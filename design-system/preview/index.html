@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System — Future Health Twin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../colors_and_type.css" />
+  <style>
+    html, body { margin: 0; padding: 0; background: var(--sage); }
+    .ds-page { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* Section */
+    .ds-section { margin-bottom: 56px; }
+    .ds-section-title {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--forest-60);
+      margin-bottom: 20px; padding-bottom: 8px;
+      border-bottom: 1px solid var(--forest-10);
+    }
+
+    /* ── Header specimen ── */
+    .spec-header {
+      background: var(--paper); border-radius: var(--r-xl); overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .spec-header-inner {
+      height: 56px; background: var(--paper);
+      border-bottom: 1px solid var(--forest-10);
+      display: flex; align-items: center;
+      padding: 0 24px; gap: 32px;
+    }
+    .spec-wordmark { font-size: 14px; font-weight: 500; letter-spacing: .08em; color: var(--forest); }
+    .spec-nav { display: flex; gap: 4px; flex: 1; }
+    .spec-nav-item {
+      padding: 6px 12px; border-radius: 8px;
+      font-size: 13px; color: var(--forest-70);
+    }
+    .spec-nav-item.active { background: var(--forest-10); color: var(--forest); font-weight: 500; }
+    .spec-header-body { padding: 16px 24px; font-size: 11px; color: var(--forest-60); }
+
+    /* ── Color swatches ── */
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .swatch {
+      border-radius: var(--r-md); overflow: hidden;
+      box-shadow: var(--shadow-xs);
+    }
+    .swatch-color { height: 72px; }
+    .swatch-info { background: var(--paper); padding: 10px 12px; }
+    .swatch-name { font-size: 12px; font-weight: 500; color: var(--forest); }
+    .swatch-hex  { font-size: 11px; font-family: var(--font-mono); color: var(--forest-60); }
+    .swatch-role { font-size: 10px; color: var(--forest-60); margin-top: 2px; }
+
+    /* Forest opacity row */
+    .opacity-row { display: flex; gap: 6px; flex-wrap: wrap; }
+    .opacity-swatch {
+      flex: 1; min-width: 60px; border-radius: var(--r-md);
+      overflow: hidden; box-shadow: var(--shadow-xs);
+    }
+    .opacity-color { height: 44px; background: var(--paper); }
+    .opacity-info  { background: var(--paper); border-top: 1px solid var(--forest-5); padding: 6px 8px; }
+    .opacity-label { font-size: 10px; font-family: var(--font-mono); color: var(--forest-60); }
+
+    /* ── Type specimens ── */
+    .type-row {
+      display: flex; align-items: baseline; gap: 24px;
+      padding: 14px 0; border-bottom: 1px solid var(--forest-5);
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta { width: 160px; flex-shrink: 0; }
+    .type-tag  { font-size: 10px; font-family: var(--font-mono); color: var(--forest-60); }
+    .type-spec { font-size: 10px; color: var(--forest-60); margin-top: 2px; }
+
+    /* ── Button grid ── */
+    .btn-grid { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; padding: 24px; background: var(--paper); border-radius: var(--r-xl); box-shadow: var(--shadow-sm); }
+
+    /* ── Input specimens ── */
+    .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 24px; background: var(--paper); border-radius: var(--r-xl); box-shadow: var(--shadow-sm); }
+    .input-label { font-size: 11px; font-weight: 500; color: var(--forest-70); margin-bottom: 6px; }
+
+    /* ── Card anatomy ── */
+    .card-anatomy { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* ── Badge row ── */
+    .badge-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 20px; background: var(--paper); border-radius: var(--r-xl); box-shadow: var(--shadow-sm); }
+
+    /* ── Spacing ruler ── */
+    .spacing-grid { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+    .spacing-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .spacing-bar  { background: var(--forest-20); border-radius: 2px; width: 24px; }
+    .spacing-label { font-size: 10px; font-family: var(--font-mono); color: var(--forest-60); }
+
+    /* ── Radius row ── */
+    .radius-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; padding: 20px; background: var(--paper); border-radius: var(--r-xl); box-shadow: var(--shadow-sm); }
+    .radius-swatch {
+      width: 56px; height: 56px; background: var(--forest-10);
+      border: 1px solid var(--forest-20); display: flex;
+      flex-direction: column; align-items: center; justify-content: center;
+    }
+    .radius-name  { font-size: 10px; font-family: var(--font-mono); color: var(--forest-70); margin-top: 8px; text-align: center; }
+
+    /* ── Motion / animation specimens ── */
+    .motion-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+    .motion-card {
+      background: var(--paper); border-radius: var(--r-xl); box-shadow: var(--shadow-sm);
+      padding: 20px; flex: 1; min-width: 200px;
+    }
+    .motion-name  { font-size: 12px; font-weight: 500; color: var(--forest); margin-bottom: 4px; }
+    .motion-value { font-size: 11px; font-family: var(--font-mono); color: var(--forest-60); margin-bottom: 12px; }
+    .motion-demo  { height: 8px; background: var(--forest); border-radius: 4px; width: 40%; }
+    .motion-demo:hover { width: 100%; }
+
+    /* ── Chart palette ── */
+    .chart-row { display: flex; gap: 8px; }
+    .chart-swatch { flex: 1; height: 48px; border-radius: var(--r-md); position: relative; }
+    .chart-label {
+      position: absolute; bottom: 6px; left: 8px;
+      font-size: 10px; font-family: var(--font-mono); color: white;
+      text-shadow: 0 1px 2px rgba(0,0,0,.4);
+    }
+  </style>
+</head>
+<body>
+<div class="ds-page">
+
+  <!-- Header -->
+  <div style="margin-bottom:48px">
+    <div style="font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--forest-60);margin-bottom:8px">Design System</div>
+    <div style="font-size:36px;font-weight:300;letter-spacing:-.025em;color:var(--forest);margin-bottom:8px">Future Health Twin</div>
+    <div style="font-size:14px;color:var(--forest-60)">Monash University × Start Hack — brand specimens</div>
+  </div>
+
+  <!-- ── 1. Header Specimen ── -->
+  <div class="ds-section">
+    <div class="ds-section-title">App header</div>
+    <div class="spec-header">
+      <div class="spec-header-inner">
+        <span class="spec-wordmark">TWIN</span>
+        <div class="spec-nav">
+          <div class="spec-nav-item active">DNA Explorer</div>
+          <div class="spec-nav-item">Twin Health</div>
+          <div class="spec-nav-item">Ask Twin</div>
+        </div>
+      </div>
+      <div class="spec-header-body">
+        Fixed band · white paper bg · forest/10 bottom border · TWIN wordmark in Geist Medium, letter-spacing .08em
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. Color swatches ── -->
+  <div class="ds-section">
+    <div class="ds-section-title">Brand palette</div>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#3c4f3d"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Forest</div>
+          <div class="swatch-hex">#3c4f3d</div>
+          <div class="swatch-role">Primary ink · button fill · brand mark</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#e9eeea;border:1px solid var(--forest-10)"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Sage</div>
+          <div class="swatch-hex">#e9eeea</div>
+          <div class="swatch-role">App canvas background</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#de8246"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Ember</div>
+          <div class="swatch-hex">#de8246</div>
+          <div class="swatch-role">Accent · links · single CTA · live data</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#ffffff;border:1px solid var(--forest-10)"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Paper</div>
+          <div class="swatch-hex">#ffffff</div>
+          <div class="swatch-role">Card / surface</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. Forest opacity tiers ── -->
+  <div class="ds-section">
+    <div class="ds-section-title">Forest opacity tiers — one ink, six weights</div>
+    <div class="opacity-row">
+      <div class="opacity-swatch">
+        <div class="opacity-color" style="background:var(--forest-5)"></div>
+        <div class="opacity-info"><div class="opacity-label">/5</div></div>
+      </div>
+      <div class="opacity-swatch">
+        <div class="opacity-color" style="background:var(--forest-10)"></div>
+        <div class="opacity-info"><div class="opacity-label">/10 border</div></div>
+      </div>
+      <div class="opacity-swatch">
+        <div class="opacity-color" style="background:var(--forest-20)"></div>
+        <div class="opacity-info"><div class="opacity-label">/20</div></div>
+      </div>
+      <div class="opacity-swatch">
+        <div class="opacity-color" style="background:var(--forest-40)"></div>
+        <div class="opacity-info"><div class="opacity-label">/40 ring</div></div>
+      </div>
+      <div class="opacity-swatch">
+        <div class="opacity-color" style="background:var(--forest-60)"></div>
+        <div class="opacity-info"><div class="opacity-label">/60 muted</div></div>
+      </div>
+      <div class="opacity-swatch">
+        <div class="opacity-color" style="background:var(--forest-70)"></div>
+        <div class="opacity-info"><div class="opacity-label">/70 secondary</div></div>
+      </div>
+      <div class="opacity-swatch">
+        <div class="opacity-color" style="background:var(--forest-80)"></div>
+        <div class="opacity-info"><div class="opacity-label">/80</div></div>
+      </div>
+      <div class="opacity-swatch">
+        <div class="opacity-color" style="background:var(--forest-100)"></div>
+        <div class="opacity-info"><div class="opacity-label">/100 body</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. Typography ── -->
+  <div class="ds-section">
+    <div class="ds-section-title">Typography — Geist Sans</div>
+    <div style="background:var(--paper);border-radius:var(--r-xl);box-shadow:var(--shadow-sm);padding:24px">
+      <div class="type-row">
+        <div class="type-meta"><div class="type-tag">display / 48px / 300</div></div>
+        <div style="font-size:var(--text-5xl);font-weight:300;letter-spacing:-.025em;color:var(--forest);line-height:1.2">Future Self</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><div class="type-tag">page / 30px / 500</div></div>
+        <div style="font-size:var(--text-3xl);font-weight:500;letter-spacing:-.025em;color:var(--forest)">Your twin in 2031</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><div class="type-tag">section / 20px / 500</div></div>
+        <div style="font-size:var(--text-xl);font-weight:500;color:var(--forest)">Health vitality score</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><div class="type-tag">body / 14px / 400</div></div>
+        <div style="font-size:var(--text-sm);color:var(--forest);line-height:var(--leading-relaxed)">
+          If you keep sleeping six hours, your twin in 2036 will continue on a declining trajectory. Sleep 7h instead. Watch your curve bend.
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><div class="type-tag">muted / 14px / 400</div></div>
+        <div style="font-size:var(--text-sm);color:var(--forest-60);line-height:var(--leading-relaxed)">
+          This baseline keeps the current Evo2 variant analysis flow and frames it as the first live signal for your broader Twin experience.
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><div class="type-tag">eyebrow / 12px / 500 / UPPER</div></div>
+        <div class="eyebrow">Input Layer</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><div class="type-tag">mono / 12px / 400</div></div>
+        <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--forest)">BRCA1 · chr17:43,044,294–43,125,483</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. Buttons ── -->
+  <div class="ds-section">
+    <div class="ds-section-title">Buttons</div>
+    <div class="btn-grid">
+      <button class="btn btn-primary">Start your twin</button>
+      <button class="btn btn-outline">Explore DNA baseline</button>
+      <button class="btn btn-ghost">Cancel</button>
+      <button class="btn btn-primary" disabled style="opacity:.4;cursor:not-allowed">Disabled</button>
+    </div>
+  </div>
+
+  <!-- ── 6. Inputs ── -->
+  <div class="ds-section">
+    <div class="ds-section-title">Inputs &amp; selects</div>
+    <div class="input-grid">
+      <div>
+        <div class="input-label">Search a gene</div>
+        <input class="input" type="text" placeholder="e.g. BRCA1" />
+      </div>
+      <div>
+        <div class="input-label">Genome assembly</div>
+        <select class="select">
+          <option>GRCh38 (hg38)</option>
+          <option>GRCh37 (hg19)</option>
+        </select>
+      </div>
+      <div>
+        <div class="input-label">Age</div>
+        <div style="position:relative">
+          <input class="input" type="number" placeholder="35" style="padding-right:48px" />
+          <span style="position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--forest-60)">years</span>
+        </div>
+      </div>
+      <div>
+        <div class="input-label">Focus (with ring)</div>
+        <input class="input" type="text" placeholder="Click to focus" style="border-color:var(--forest-40)" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 7. Badges ── -->
+  <div class="ds-section">
+    <div class="ds-section-title">Badges &amp; status pills</div>
+    <div class="badge-row">
+      <span class="badge badge-forest">Pathogenic</span>
+      <span class="badge badge-ember">High impact</span>
+      <span class="badge badge-sage">Benign</span>
+      <span class="badge badge-forest">Input layer</span>
+      <span class="badge badge-ember">Live signal</span>
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+  <!-- ── 8. Card anatomy ── -->
+  <div class="ds-section">
+    <div class="ds-section-title">Card anatomy</div>
+    <div class="card-anatomy">
+      <div class="card">
+        <div class="card-title">Gene information</div>
+        <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px">
+          <div class="card-inner">
+            <div style="font-size:11px;font-weight:500;color:var(--forest);margin-bottom:4px">Symbol</div>
+            <div style="font-family:var(--font-mono);font-size:12px;color:var(--forest)">BRCA1</div>
+          </div>
+          <div class="card-inner">
+            <div style="font-size:11px;font-weight:500;color:var(--forest);margin-bottom:4px">Chromosome</div>
+            <div style="font-family:var(--font-mono);font-size:12px;color:var(--forest)">chr17</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Variant analysis</div>
+        <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px">
+          <div class="card-inner">
+            <div style="font-size:11px;color:var(--forest-60);margin-bottom:4px">Evo2 delta score</div>
+            <div style="font-size:20px;font-weight:500;color:var(--forest)">−2.847</div>
+          </div>
+          <div class="card-inner" style="background:oklch(0.98 0.015 50);border-color:var(--ember)">
+            <div style="font-size:11px;color:var(--ember);font-weight:500">Likely pathogenic</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 9. Spacing ── -->
+  <div class="ds-section">
+    <div class="ds-section-title">Spacing — 4-point grid</div>
+    <div style="background:var(--paper);border-radius:var(--r-xl);box-shadow:var(--shadow-sm);padding:24px">
+      <div class="spacing-grid">
+        <div class="spacing-item"><div class="spacing-bar" style="height:4px"></div><div class="spacing-label">4px</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:8px"></div><div class="spacing-label">8px</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:12px"></div><div class="spacing-label">12px</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:16px"></div><div class="spacing-label">16px</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:24px"></div><div class="spacing-label">24px</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:32px"></div><div class="spacing-label">32px</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:40px"></div><div class="spacing-label">40px</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:48px"></div><div class="spacing-label">48px</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:64px"></div><div class="spacing-label">64px</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 10. Radii ── -->
+  <div class="ds-section">
+    <div class="ds-section-title">Border radii</div>
+    <div class="radius-row">
+      <div style="text-align:center">
+        <div class="radius-swatch" style="border-radius:var(--r-sm)"></div>
+        <div class="radius-name">sm / 6px</div>
+      </div>
+      <div style="text-align:center">
+        <div class="radius-swatch" style="border-radius:var(--r-md)"></div>
+        <div class="radius-name">md / 8px<br>inputs, btns</div>
+      </div>
+      <div style="text-align:center">
+        <div class="radius-swatch" style="border-radius:var(--r-lg)"></div>
+        <div class="radius-name">lg / 10px</div>
+      </div>
+      <div style="text-align:center">
+        <div class="radius-swatch" style="border-radius:var(--r-xl)"></div>
+        <div class="radius-name">xl / 14px<br>cards</div>
+      </div>
+      <div style="text-align:center">
+        <div class="radius-swatch" style="border-radius:var(--r-pill);width:88px;height:32px"></div>
+        <div class="radius-name">pill<br>badges</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 11. Chart palette ── -->
+  <div class="ds-section">
+    <div class="ds-section-title">Chart palette</div>
+    <div style="background:var(--paper);border-radius:var(--r-xl);box-shadow:var(--shadow-sm);padding:24px">
+      <div class="chart-row">
+        <div class="chart-swatch" style="background:var(--chart-1)"><span class="chart-label">chart-1 / ember</span></div>
+        <div class="chart-swatch" style="background:oklch(0.60 0.10 190)"><span class="chart-label">chart-2 / teal</span></div>
+        <div class="chart-swatch" style="background:oklch(0.45 0.05 148)"><span class="chart-label">chart-3 / forest</span></div>
+        <div class="chart-swatch" style="background:oklch(0.82 0.15 85)"><span class="chart-label">chart-4 / amber</span></div>
+        <div class="chart-swatch" style="background:oklch(0.75 0.10 175)"><span class="chart-label">chart-5 / teal lt</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 12. Motion ── -->
+  <div class="ds-section">
+    <div class="ds-section-title">Motion — hover each bar to see transition</div>
+    <div class="motion-grid">
+      <div class="motion-card">
+        <div class="motion-name">Fast</div>
+        <div class="motion-value">150ms ease-out</div>
+        <div class="motion-demo" style="transition:width 150ms var(--ease-out-smooth)"></div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">Default</div>
+        <div class="motion-value">200ms ease-out-smooth</div>
+        <div class="motion-demo" style="transition:width 200ms var(--ease-out-smooth)"></div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">Chart tween</div>
+        <div class="motion-value">400ms ease-out-smooth</div>
+        <div class="motion-demo" style="background:var(--ember);transition:width 400ms var(--ease-out-smooth)"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 13. Voice & copy ── -->
+  <div class="ds-section">
+    <div class="ds-section-title">Voice &amp; copy — sentence case, second person, future tense</div>
+    <div style="background:var(--paper);border-radius:var(--r-xl);box-shadow:var(--shadow-sm);padding:24px;display:flex;flex-direction:column;gap:20px">
+      <div>
+        <div style="font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ember);margin-bottom:6px">Do</div>
+        <div style="font-size:14px;color:var(--forest);line-height:1.6">
+          "See your twin in 2036."<br>
+          "Sleep 7h instead of 5h. Watch your trajectory bend."<br>
+          "Search a gene to open the current Twin baseline workflow."<br>
+          "+3 years of healthy life expectancy."
+        </div>
+      </div>
+      <div style="height:1px;background:var(--forest-10)"></div>
+      <div>
+        <div style="font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--forest-60);margin-bottom:6px;text-decoration:line-through">Don't</div>
+        <div style="font-size:14px;color:var(--forest-60);line-height:1.6;text-decoration:line-through">
+          "Get started!" / "Let's go!" / emoji bullets<br>
+          "AI-powered revolutionary next-generation platform"<br>
+          "We'll show you…" / "Our system…"<br>
+          Red urgent warning banners
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
